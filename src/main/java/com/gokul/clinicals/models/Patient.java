@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Patient {
-	
+
 	@Id()
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -22,8 +22,16 @@ public class Patient {
 	@Column(name = "last_name")
 	private String lastname;
 	private int age;
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "patient")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "patient")
 	private List<ClinicalData> clinicalData;
+
+	public List<ClinicalData> getClinicalData() {
+		return clinicalData;
+	}
+
+	public void setClinicalData(List<ClinicalData> clinicalData) {
+		this.clinicalData = clinicalData;
+	}
 
 	public int getId() {
 		return id;
